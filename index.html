@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Voting DApp — Professional Dashboard</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Chart.js for charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+  <!-- Ethers (v6) -->
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6.6.0/dist/ethers.umd.min.js"></script>
+</head>
+<body>
+  <div class="dashboard">
+    <header class="topbar">
+      <div class="brand">
+        <img src="" alt="" id="logo" style="display:none"/>
+        <h1>Voting DApp</h1>
+        <span class="subtitle">Professional Dashboard</span>
+      </div>
+
+      <div class="top-actions">
+        <div id="account" class="account">Not connected</div>
+        <button id="connectBtn" class="btn primary">Connect Wallet</button>
+      </div>
+    </header>
+
+    <main class="main-grid">
+      <!-- Left column: controls -->
+      <section class="panel">
+        <h2>Controls</h2>
+
+        <label class="label">Contract address</label>
+        <input id="contractAddress" placeholder="0x123...ABC" />
+
+        <div class="row">
+          <button id="loadBtn" class="btn">Load Contract</button>
+          <button id="refreshBtn" class="btn outline">Refresh</button>
+        </div>
+
+        <div class="info">
+          <div><strong>Network:</strong> <span id="networkInfo">-</span></div>
+          <div><strong>Tx status:</strong> <span id="txStatus">idle</span></div>
+        </div>
+
+        <hr />
+
+        <h3>Top Actions</h3>
+        <p class="muted">Use the buttons below to test and interact quickly.</p>
+        <button id="autoVoteBtn" class="btn accent">Simulate Vote (demo)</button>
+        <button id="clearBtn" class="btn outline">Clear</button>
+      </section>
+
+      <!-- Right column: charts -->
+      <section class="panel panel-chart">
+        <h2>Results</h2>
+
+        <div class="stats-row">
+          <div class="stat">
+            <div class="stat-value" id="totalVotes">0</div>
+            <div class="stat-label">Total votes</div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-value" id="votersCount">0</div>
+            <div class="stat-label">Unique voters</div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-value" id="candidatesCount">0</div>
+            <div class="stat-label">Candidates</div>
+          </div>
+        </div>
+
+        <div class="chart-wrap">
+          <canvas id="voteChart"></canvas>
+        </div>
+
+        <h3 style="margin-top:18px">Candidates</h3>
+        <div id="candidatesList" class="candidates-list"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="muted">Built with ❤️ • Your Project</div>
+    </footer>
+  </div>
+
+  <!-- Your existing app logic (uploaded earlier) -->
+  <!-- IMPORTANT: this uses your uploaded app.js file -->
+  <script src="sandbox:/mnt/data/app.js"></script>
+
+  <!-- Dashboard glue: API that talks to your app.js contract instance and renders charts -->
+  <script src="dashboard.js"></script>
+</body>
+</html>
